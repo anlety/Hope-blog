@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/anlety/Hope-blog#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.1.1"
   }
 }
