@@ -1,6 +1,7 @@
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import OAuth from "../components/OAuth"
 
 
 
@@ -81,6 +82,7 @@ const handleSubmit = async(e) =>{
 
             <Button gradientDuoTone='purpleToBlue' type="submit" className="text-white" disabled={loading}>{loading? (<><Spinner size='sm' />
              <span className="pl-3">loading...</span> </>)  : 'Sign up'}</Button>
+             <OAuth />
           </form>
           <div className="mt-3">
             <span>Have an account?</span> <Link to='/sign-in' className="text-blue-500 hover:text-blue-700">Sign in</Link>
