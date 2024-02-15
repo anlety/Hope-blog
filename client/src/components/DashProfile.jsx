@@ -2,6 +2,7 @@ import { Alert, Button, Modal, TextInput } from 'flowbite-react'
 import { useEffect, useRef, useState } from 'react'
 import {useSelector} from 'react-redux';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import {Link} from 'react-router-dom'
 import {
   getDownloadURL,
   getStorage,
@@ -16,7 +17,7 @@ import {useDispatch} from 'react-redux'
 
 
 export default function DashProfile() {
-  const {currentUser, error} = useSelector(state => state.user)
+  const {currentUser, error, loading} = useSelector(state => state.user)
   const [imageFile, setImageFile] = useState(null)
   const [imageFileUrl, setImageFileUrl] = useState(null)
   const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null)
@@ -182,7 +183,15 @@ const [showModal, setShowModal] = useState(false)
           <TextInput type='text' id='username' placeholder='username' defaultValue={currentUser.username} className='' onChange={handleChange}/>
           <TextInput type='email' id='email' placeholder='email' defaultValue={currentUser.email} onChange={handleChange}/>
           <TextInput type='password' id='password' placeholder='password'  onChange={handleChange}/>
-          <Button type='submit' gradientDuoTone='purpleToBlue'>Update</Button>
+          <Button type='submit' gradientDuoTone='purpleToBlue' disabled={loading || imageFileUploading}>{loading ? 'Loading...' : 'Update'}</Button>
+          {
+            currentUser.isAdmin && (
+              <Link to={'/create-post'}>
+
+              <Button type='button' gradientDuoTone='purpleToBlue' className='w-full'>Create post</Button>
+              </Link>
+            )
+          }
       </form>
       <div className='text-red-500 flex justify-between hover:text-red-700 mt-4'>
         <span className='cursor-pointer' onClick={()=> setShowModal(true)}>Delete Account</span>

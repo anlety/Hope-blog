@@ -44,7 +44,7 @@ try {
   if(!validPassword) { return next(errorHandler(400, 'Your email or password are not valid'))};
 
     // 3.Create token with jsonwebtoken
-    const token = jwt.sign({id: validUser._id}, process.env.JWT_SECRET)
+    const token = jwt.sign({id: validUser._id, isAdmin: validUser.isAdmin}, process.env.JWT_SECRET)
 
     // Remove the password from the cookie
     const {password: pass, ...rest} = validUser._doc;
