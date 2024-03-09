@@ -1,6 +1,7 @@
 import moment from 'moment';
 import { useEffect, useState } from 'react';
-import { FaThumbsUp } from 'react-icons/fa';
+// import { FaThumbsUp } from 'react-icons/fa';
+import { FaHeart } from "react-icons/fa";
 import { useSelector } from 'react-redux';
 import { Button, Textarea } from 'flowbite-react';
 import { set } from 'mongoose';
@@ -10,11 +11,13 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(comment.content);
   const { currentUser } = useSelector((state) => state.user);
+  // console.log(currentUser)
   useEffect(() => {
     const getUser = async () => {
       try {
         const res = await fetch(`/api/user/${comment.userId}`);
         const data = await res.json();
+        // console.log(data)
         if (res.ok) {
           setUser(data);
         }
@@ -101,13 +104,14 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
               <button
                 type='button'
                 onClick={() => onLike(comment._id)}
-                className={`text-gray-400 hover:text-blue-500 ${
+                className={`text-gray-400 hover:text-red-500 ${
                   currentUser &&
                   comment.likes.includes(currentUser._id) &&
-                  '!text-blue-500'
+                  '!text-red-500'
                 }`}
               >
-                <FaThumbsUp className='text-sm' />
+                {/* <FaThumbsUp className='text-sm' /> */}
+                <FaHeart className='text-sm'/>
               </button>
               <p className='text-gray-400'>
                 {comment.numberOfLikes > 0 &&

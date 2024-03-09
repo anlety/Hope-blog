@@ -31,7 +31,7 @@ export default function Dashboard() {
 
         {tab === 'posts' && <DashPosts />}
         {tab === 'users' && <DashUsers />}
-        {tab === 'comment' && <DashComments />}
+        {tab === 'comments' && <DashComments />}
         {tab === 'dash' && <DashboardComp/>}
     </div>
   )
