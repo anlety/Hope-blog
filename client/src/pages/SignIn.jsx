@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import {signInStart, signInSuccess, signInFailure} from '../redux/user/userSlice'
+import { PiFlowerLotusThin } from "react-icons/pi";
 import OAuth from "../components/OAuth";
 
 
@@ -58,11 +59,14 @@ const handleSubmit = async(e) =>{
       <div className="flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-5">
 
         <div className='flex-1'>
-        <Link to='/' className="  font-bold text-4xl dark:text-white"><span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">Hope's</span> Blog</Link>
-        <p className="text-sm mt-5">Write whatever you like</p>
+        <Link to='/' className="  font-bold text-4xl dark:text-white">
+          < PiFlowerLotusThin className="text-7xl text-red-400"/>
+          <span className="px-2 py-1">Hope's Blog</span> </Link>
+        <p className="text-sm mt-5">Please sign in</p>
         </div>
 
         <div className='flex-1'>
+        <h1 className="text-3xl font-semibold text-center pb-5">Sign in</h1>
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
             
             <div>
@@ -84,7 +88,9 @@ const handleSubmit = async(e) =>{
               />
             </div>
 
-            <Button gradientDuoTone='purpleToBlue' type="submit" className="text-white" disabled={loading}>{loading? (<><Spinner size='sm' />
+            <Button 
+            pill
+            gradientDuoTone='purpleToBlue' type="submit" className="text-white" disabled={loading}>{loading? (<><Spinner size='sm' />
              <span className="pl-3">loading...</span> </>)  : 'Sign in'}</Button>
              <OAuth />
           </form>
@@ -93,7 +99,8 @@ const handleSubmit = async(e) =>{
           </div>
           {errorMessage && (<Alert className='mt-5' color='failure'>
             {errorMessage}
-          </Alert>)}
+          </Alert>
+          )}
         </div>
       </div>
     </div>

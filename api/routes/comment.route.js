@@ -7,12 +7,14 @@ import {
   getPostComments,
   getcomments,
   likeComment,
+  getPostsComments
 } from '../controllers/comment.controller.js';
 
 const router = express.Router();
 
 router.post('/create', verifyToken, createComment);
-router.get('/getPostComments/:postId', getPostComments);
+router.get('/getPostComments/:userId', getPostComments);
+router.get('/getPostsComments/:postId', getPostsComments);
 router.put('/likeComment/:commentId', verifyToken, likeComment);
 router.put('/editComment/:commentId', verifyToken, editComment);
 router.delete('/deleteComment/:commentId', verifyToken, deleteComment);

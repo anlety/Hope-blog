@@ -83,7 +83,7 @@ export default function CreatePost() {
     }
   };
   return (
-    <div className='p-3 max-w-3xl mx-auto min-h-screen'>
+    <div className='p-3 max-w-3xl mx-auto min-h-screen  shadow-gray-400 shadow-lg mt-3 mb-3  bg-neutral-100 dark:bg-zinc-800 rounded-md'>
       <h1 className='text-center text-3xl my-7 font-semibold'>Create a post</h1>
       <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
         <div className='flex flex-col gap-4 sm:flex-row justify-between'>
@@ -103,12 +103,12 @@ export default function CreatePost() {
             }
           >
             <option value='uncategorized'>Select a category</option>
-            <option value='javascript'>JavaScript</option>
-            <option value='reactjs'>React.js</option>
-            <option value='nextjs'>Next.js</option>
+            <option value='fitness'>Fitness</option>
+            <option value='ai'>AI</option>
+            <option value='car'>Car</option>
           </Select>
         </div>
-        <div className='flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3'>
+        <div className='flex gap-4 items-center justify-between border-4 border-gray-200  p-3'>
           <FileInput
             type='file'
             accept='image/*'
@@ -118,9 +118,9 @@ export default function CreatePost() {
             type='button'
             gradientDuoTone='purpleToBlue'
             size='sm'
-            outline
             onClick={handleUpdloadImage}
             disabled={imageUploadProgress}
+            pill
           >
             {imageUploadProgress ? (
               <div className='w-16 h-16'>
@@ -145,13 +145,13 @@ export default function CreatePost() {
         <ReactQuill
           theme='snow'
           placeholder='Write something...'
-          className='h-72 mb-12'
+          className='h-72 mb-12 dark:text-blue'
           required
           onChange={(value) => {
             setFormData({ ...formData, content: value });
           }}
         />
-        <Button type='submit' gradientDuoTone='purpleToPink'>
+        <Button type='submit' gradientDuoTone='purpleToBlue' pill>
           Publish
         </Button>
         {publishError && (

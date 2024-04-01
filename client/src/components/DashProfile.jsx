@@ -150,7 +150,7 @@ const [showModal, setShowModal] = useState(false)
     }
   };
   return (
-    <div className='max-w-lg mx-auto p-3 w-full'>
+    <div className='max-w-lg mx-auto p-3 w-full shadow-gray-400 bg-neutral-100 shadow-lg mt-3 mb-3  dark:bg-zinc-900 rounded-md'>
       <h1 className='my-7 text-center font-semibold text-3xl'>Profile</h1>
       <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
           <input type='file' accept='image/*'  onChange={handleImageChange}  ref={filePickerRef} hidden/>
@@ -183,19 +183,19 @@ const [showModal, setShowModal] = useState(false)
           <TextInput type='text' id='username' placeholder='username' defaultValue={currentUser.username} className='' onChange={handleChange}/>
           <TextInput type='email' id='email' placeholder='email' defaultValue={currentUser.email} onChange={handleChange}/>
           <TextInput type='password' id='password' placeholder='password'  onChange={handleChange}/>
-          <Button type='submit' gradientDuoTone='purpleToBlue' disabled={loading || imageFileUploading}>{loading ? 'Loading...' : 'Update'}</Button>
-          {
-            currentUser.isAdmin && (
+          <Button type='submit' gradientDuoTone='purpleToBlue' disabled={loading || imageFileUploading} pill>{loading ? 'Loading...' : 'Update'}</Button>
+          {/* {
+            currentUser && (
               <Link to={'/create-post'}>
 
               <Button type='button' gradientDuoTone='purpleToBlue' className='w-full'>Create post</Button>
               </Link>
             )
-          }
+          } */}
       </form>
-      <div className='text-red-500 flex justify-between hover:text-red-700 mt-4'>
-        <span className='cursor-pointer' onClick={()=> setShowModal(true)}>Delete Account</span>
-        <span className='cursor-pointer' onClick={handleSignout}>Sign Out</span>
+      <div className=' flex justify-between mt-4'>
+        <span className='cursor-pointer text-red-500 hover:text-red-600 ' onClick={()=> setShowModal(true)}>Delete Account</span>
+        <span className='cursor-pointer text-blue-500 hover:text-blue-600' onClick={handleSignout}>Sign Out</span>
       </div>
       {
         updateUserSuccess && (
@@ -224,7 +224,7 @@ const [showModal, setShowModal] = useState(false)
               <Button color='failure' onClick={handleDeleteUser}>
                 Yes, I'm sure
               </Button>
-              <Button color='gray' onClick={() => setShowModal(false)}>
+              <Button color='gray' onClick={() => setShowModal(false)} pill>
                 No, cancel
               </Button>
             </div>

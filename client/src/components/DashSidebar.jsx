@@ -7,6 +7,11 @@ import {
   HiAnnotation,
   HiChartPie,
 } from 'react-icons/hi';
+import { BsPostcard } from "react-icons/bs";
+import { CiUser } from "react-icons/ci";
+import { TbDoorExit } from "react-icons/tb";
+import { MdPostAdd } from "react-icons/md";
+import { AiOutlineMessage } from "react-icons/ai";
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { signoutSuccess } from '../redux/user/userSlice';
@@ -41,10 +46,10 @@ export default function DashSidebar() {
     }
   };
   return (
-    <Sidebar className='w-full md:w-56'>
-      <Sidebar.Items>
-        <Sidebar.ItemGroup className='flex flex-col gap-1'>
-          {currentUser && currentUser.isAdmin && (
+    <Sidebar className='w-full md:w-56 mt-1 dark:bg-black'>
+      <Sidebar.Items className=''>
+        <Sidebar.ItemGroup className='flex flex-col gap-1 '>
+          {currentUser && (
             <Link to='/dashboard?tab=dash'>
               <Sidebar.Item
                 active={tab === 'dash' || !tab}
@@ -58,28 +63,40 @@ export default function DashSidebar() {
           <Link to='/dashboard?tab=profile'>
             <Sidebar.Item
               active={tab === 'profile'}
-              icon={HiUser}
-              label={currentUser.isAdmin ? 'Admin' : 'User'}
+              icon={CiUser}
+              // label={currentUser.isAdmin ? 'Admin' : 'User'}
               labelColor='dark'
               as='div'
             >
               Profile
             </Sidebar.Item>
           </Link>
-          {currentUser.isAdmin && (
+         
+          {currentUser && (
             <Link to='/dashboard?tab=posts'>
               <Sidebar.Item
                 active={tab === 'posts'}
-                icon={HiDocumentText}
+                icon={BsPostcard}
                 as='div'
               >
-                Posts
+                All Posts
               </Sidebar.Item>
             </Link>
           )}
-          {currentUser.isAdmin && (
+          {currentUser && (
+            <Link to='/dashboard?tab=create'>
+              <Sidebar.Item
+                active={tab === 'create'}
+                icon={ MdPostAdd}
+                as='div'
+              >
+                Create
+              </Sidebar.Item>
+            </Link>
+          )}
+          {currentUser && (
             <>
-              <Link to='/dashboard?tab=users'>
+              {/* <Link to='/dashboard?tab=users'>
                 <Sidebar.Item
                   active={tab === 'users'}
                   icon={HiOutlineUserGroup}
@@ -87,11 +104,11 @@ export default function DashSidebar() {
                 >
                   Users
                 </Sidebar.Item>
-              </Link>
+              </Link> */}
               <Link to='/dashboard?tab=comments'>
                 <Sidebar.Item
                   active={tab === 'comments'}
-                  icon={HiAnnotation}
+                  icon={AiOutlineMessage}
                   as='div'
                 >
                   Comments
@@ -100,7 +117,7 @@ export default function DashSidebar() {
             </>
           )}
           <Sidebar.Item
-            icon={HiArrowSmRight}
+            icon={TbDoorExit}
             className='cursor-pointer'
             onClick={handleSignout}
           >

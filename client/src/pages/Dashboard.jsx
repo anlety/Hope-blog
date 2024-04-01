@@ -7,6 +7,9 @@ import DashUsers from "../components/DashUser.jsx"
 import DashComments from "../components/DashComment.jsx"
 import DashboardComp from "../components/DashboardComp.jsx"
 
+import CreatePost from "./CreatePost.jsx"
+
+
 
 export default function Dashboard() {
   const [tab, setTab] = useState('')
@@ -31,6 +34,7 @@ export default function Dashboard() {
 
         {tab === 'posts' && <DashPosts />}
         {tab === 'users' && <DashUsers />}
+        {tab === 'create' && <CreatePost />}
         {tab === 'comments' && <DashComments />}
         {tab === 'dash' && <DashboardComp/>}
     </div>

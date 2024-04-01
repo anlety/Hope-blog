@@ -44,7 +44,7 @@ export default function CommentSection({ postId }) {
   useEffect(() => {
     const getComments = async () => {
       try {
-        const res = await fetch(`/api/comment/getPostComments/${postId}`);
+        const res = await fetch(`/api/comment/getPostsComments/${postId}`);
         if (res.ok) {
           const data = await res.json();
           setComments(data);
@@ -151,8 +151,8 @@ export default function CommentSection({ postId }) {
             <p className='text-gray-500 text-xs'>
               {200 - comment.length} characters remaining
             </p>
-            <Button outline gradientDuoTone='purpleToBlue' type='submit'>
-              Submit
+            <Button  gradientDuoTone='purpleToBlue' type='submit'>
+              Post
             </Button>
           </div>
           {commentError && (

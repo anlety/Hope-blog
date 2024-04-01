@@ -131,12 +131,12 @@ export default function Search() {
               id='category'
             >
               <option value='uncategorized'>Uncategorized</option>
-              <option value='reactjs'>React.js</option>
-              <option value='nextjs'>Next.js</option>
-              <option value='javascript'>JavaScript</option>
+              <option value='fitness'>Fitness</option>
+              <option value='ai'>AI</option>
+              <option value='car'>Car</option>
             </Select>
           </div>
-          <Button type='submit' outline gradientDuoTone='purpleToPink'>
+          <Button type='submit' gradientDuoTone='purpleToBlue' pill>
             Apply Filters
           </Button>
         </form>

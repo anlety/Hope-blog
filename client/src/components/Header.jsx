@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../redux/theme/themeSlice';
 import { signoutSuccess } from '../redux/user/userSlice';
 import { useEffect, useState } from 'react';
+import { PiFlowerLotusThin } from "react-icons/pi";
 
 export default function Header() {
   const path = useLocation().pathname;
@@ -49,28 +50,29 @@ export default function Header() {
   };
 
   return (
-    <Navbar className='border-b-2'>
+    <Navbar className='shadow-b-2 shadow-md  shadow-gray-300 dark:bg-black'>
       <Link
         to='/'
-        className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white'
+        className=' whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white flex gap-1 items-center'
       >
-        <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'>
-          Sahand's
-        </span>
-        Blog
+        
+          <PiFlowerLotusThin className='text-4xl text-red-400 hover:text-red-600' /><span className='italic font-semibold'>Hope</span>
+        
+        
       </Link>
       <form onSubmit={handleSubmit}>
         <TextInput
           type='text'
           placeholder='Search...'
-          rightIcon={AiOutlineSearch}
-          className='hidden lg:inline'
+          rightIcon={AiOutlineSearch }
+          className='hidden lg:inline rounded-full'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+          
         />
       </form>
       <Button className='w-12 h-10 lg:hidden' color='gray' pill>
-        <AiOutlineSearch />
+        <AiOutlineSearch className='text-red-400 hover:text-red-600'  />
       </Button>
       <div className='flex gap-2 md:order-2'>
         <Button
@@ -79,7 +81,7 @@ export default function Header() {
           pill
           onClick={() => dispatch(toggleTheme())}
         >
-          {theme === 'light' ? <FaSun /> : <FaMoon />}
+          {theme === 'light' ? <FaMoon /> : <FaSun /> }
         </Button>
         {currentUser ? (
           <Dropdown
@@ -88,8 +90,9 @@ export default function Header() {
             label={
               <Avatar alt='user' img={currentUser.profilePicture} rounded />
             }
+            className='dark:bg-zinc-900'
           >
-            <Dropdown.Header>
+            <Dropdown.Header cl>
               <span className='block text-sm'>@{currentUser.username}</span>
               <span className='block text-sm font-medium truncate'>
                 {currentUser.email}
@@ -102,11 +105,19 @@ export default function Header() {
             <Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
           </Dropdown>
         ) : (
-          <Link to='/sign-in'>
-            <Button gradientDuoTone='purpleToBlue' outline>
+          <div className='flex gap-2'>
+             <Link to='/sign-in'>
+            <Button gradientDuoTone='purpleToBlue' pill>
               Sign In
             </Button>
           </Link>
+             <Link to='/sign-up'>
+            <Button gradientDuoTone='purpleToBlue' pill>
+              Sign Up
+            </Button>
+          </Link>
+          </div>
+         
         )}
         <Navbar.Toggle />
       </div>
@@ -117,9 +128,9 @@ export default function Header() {
         <Navbar.Link active={path === '/about'} as={'div'}>
           <Link to='/about'>About</Link>
         </Navbar.Link>
-        <Navbar.Link active={path === '/projects'} as={'div'}>
-          <Link to='/projects'>Projects</Link>
-        </Navbar.Link>
+        {/* <Navbar.Link active={path === '/projects'} as={'div'}>
+          <Link to='/projects'>Contact</Link>
+        </Navbar.Link> */}
       </Navbar.Collapse>
     </Navbar>
   );
