@@ -23,7 +23,7 @@ export default function PostCard({ post }) {
   return (
     
 
-    <div className='shadow-md shadow-gray-300  border-gray-300 hover:opacity-50 rounded-md w-[550px]'>
+    <div className='shadow-md shadow-gray-300  border-gray-300 hover:opacity-50 rounded-md '>
     <Link
     className="block-full lg:flex  p-1 bg-neutral-100 dark:bg-zinc-900 rounded-md"
     to={`/post/${post.slug}`}
