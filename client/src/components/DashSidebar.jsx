@@ -1,16 +1,10 @@
 import { Sidebar } from 'flowbite-react';
-import {
-  HiUser,
-  HiArrowSmRight,
-  HiDocumentText,
-  HiOutlineUserGroup,
-  HiAnnotation,
-  HiChartPie,
-} from 'react-icons/hi';
+
 import { BsPostcard } from "react-icons/bs";
 import { CiUser } from "react-icons/ci";
 import { TbDoorExit } from "react-icons/tb";
 import { MdPostAdd } from "react-icons/md";
+import { RxDashboard } from "react-icons/rx";
 import { AiOutlineMessage } from "react-icons/ai";
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -53,7 +47,7 @@ export default function DashSidebar() {
             <Link to='/dashboard?tab=dash'>
               <Sidebar.Item
                 active={tab === 'dash' || !tab}
-                icon={HiChartPie}
+                icon={RxDashboard}
                 as='div'
               >
                 Dashboard

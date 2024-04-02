@@ -10,6 +10,7 @@ export default function DashUsers() {
   const [showMore, setShowMore] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [userIdToDelete, setUserIdToDelete] = useState('');
+  
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -43,6 +44,7 @@ export default function DashUsers() {
       }
     } catch (error) {
       console.log(error.message);
+      
     }
   };
 
@@ -74,7 +76,7 @@ export default function DashUsers() {
               <Table.HeadCell>Username</Table.HeadCell>
               <Table.HeadCell>Email</Table.HeadCell>
               <Table.HeadCell>Admin</Table.HeadCell>
-              <Table.HeadCell>Delete</Table.HeadCell>
+              {/* <Table.HeadCell>Delete</Table.HeadCell> */}
             </Table.Head>
             {users.map((user) => (
               <Table.Body className='divide-y' key={user._id}>
@@ -98,7 +100,7 @@ export default function DashUsers() {
                       <FaTimes className='text-red-500' />
                     )}
                   </Table.Cell>
-                  <Table.Cell>
+                  {/* <Table.Cell>
                     <span
                       onClick={() => {
                         setShowModal(true);
@@ -108,7 +110,7 @@ export default function DashUsers() {
                     >
                       Delete
                     </span>
-                  </Table.Cell>
+                  </Table.Cell> */}
                 </Table.Row>
               </Table.Body>
             ))}
@@ -149,6 +151,7 @@ export default function DashUsers() {
           </div>
         </Modal.Body>
       </Modal>
+        
     </div>
   );
 }

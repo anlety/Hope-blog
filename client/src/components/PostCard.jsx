@@ -4,7 +4,7 @@ import moment from 'moment';
 
 export default function PostCard({ post }) {
   const [user, setUser] = useState({});
-  // console.log(post)
+  console.log(post)
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -38,9 +38,9 @@ export default function PostCard({ post }) {
         <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2 dark:text-white">
           {post.title}
         </div>
-        {/* <p className="text-gray-700 text-base dark:text-white line-clamp-3">{post.content}</p> */}
+        
         <div>
-          <h2 className='line-clamp-3'>{post.content}</h2>
+          <p className='line-clamp-3 text-sm'>{post.content}</p>
         </div>
        
       </div>
