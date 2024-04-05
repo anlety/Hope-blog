@@ -20,9 +20,9 @@ export default function FooterCom() {
         
       </Link>
       <div className="flex gap-6 mt-4 sm:mt-2 sm:justify-center mb-1">
-                <Footer.Icon href="https://www.facebook.com" target="_blank" icon={BsFacebook}/>
-                <Footer.Icon href="https://www.instagram.com" target="_blank" icon={BsInstagram}/>
-                <Footer.Icon href="https://www.twitter.com" target="_blank" icon={BsTwitter}/>
+                <Footer.Icon href="https://www.facebook.com" target="_blank" icon={BsFacebook} className="hover:text-blue-400"/>
+                <Footer.Icon href="https://www.instagram.com" target="_blank" icon={BsInstagram} className="hover:text-blue-400"/>
+                <Footer.Icon href="https://www.twitter.com" target="_blank" icon={BsTwitter} className="hover:text-blue-400"/>
                 
             </div>
         </div>
