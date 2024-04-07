@@ -92,7 +92,7 @@ export default function Search() {
     if (res.ok) {
       const data = await res.json();
       setPosts([...posts, ...data.posts]);
-      if (data.posts.length === 9) {
+      if (data.posts.length === 8) {
         setShowMore(true);
       } else {
         setShowMore(false);
@@ -145,7 +145,7 @@ export default function Search() {
         <h1 className='text-3xl font-semibold sm:border-b border-gray-500 p-3 mt-5 '>
           Posts results:
         </h1>
-        <div className='p-7 flex flex-wrap gap-4'>
+        <div className='p-7 flex flex-wrap gap-4 lg:gap-3 lg:p-3 lg:grid lg:grid-cols-2'>
           {!loading && posts.length === 0 && (
             <p className='text-xl text-gray-500'>No posts found.</p>
           )}
@@ -156,11 +156,12 @@ export default function Search() {
           {showMore && (
             <button
               onClick={handleShowMore}
-              className='text-teal-500 text-lg hover:underline p-7 w-full'
+              className='text-blue-500 text-lg hover:underline p-7 w-full'
             >
               Show More
             </button>
           )}
+          
         </div>
       </div>
     </div>

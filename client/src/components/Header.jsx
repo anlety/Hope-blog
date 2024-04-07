@@ -60,16 +60,21 @@ export default function Header() {
         
         
       </Link>
-      <form onSubmit={handleSubmit}>
-        <TextInput
+      <form onSubmit={handleSubmit} className='bg-gray-300 p-1 flex items-center rounded-full w-[100px] md:w-[200px]'>
+        {/* <TextInput
           type='text'
           placeholder='Search...'
           rightIcon={AiOutlineSearch }
-          className='lg:inline rounded-full '
+          className='lg:inline rounded-full cursor-pointer'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           
-        />
+        /> */}
+           <input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder='Search...' className='p-1 bg-transparent border-none text-gray-600  w-full focus:outline-none' />
+          <button type='submit' className=''>
+            <AiOutlineSearch className='text-xl cursor-pointer text-blue-500 hover:text-blue-700 ' />
+          </button> 
+        
       </form>
       {/* <Button className='w-12 h-10 lg:hidden' color='gray' pill>
         <AiOutlineSearch className='text-red-400 hover:text-red-600'  />
@@ -128,9 +133,13 @@ export default function Header() {
         <Navbar.Link active={path === '/about'} as={'div'}>
           <Link to='/about'>About</Link>
         </Navbar.Link>
-        {/* <Navbar.Link active={path === '/projects'} as={'div'}>
-          <Link to='/projects'>Contact</Link>
+        {/* <Navbar.Link active={path === '/sign-in'} as={'div'} >
+          <Link to='/sign-in'>Sign in</Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === '/sign-up'} as={'div'}>
+          <Link to='/sign-up'>Sign up</Link>
         </Navbar.Link> */}
+        
       </Navbar.Collapse>
     </Navbar>
   );

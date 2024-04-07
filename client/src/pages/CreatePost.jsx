@@ -1,5 +1,7 @@
 import { Alert, Button, FileInput, Select, TextInput } from 'flowbite-react';
 import ReactQuill from 'react-quill';
+
+// import 'react-quill/dist/quill.snow.css';
 import 'react-quill/dist/quill.snow.css';
 import {
   getDownloadURL,
@@ -146,14 +148,18 @@ export default function CreatePost() {
           theme='snow'
           placeholder='Write something...'
           className='h-72 mb-12 dark:text-blue'
+          
           required
           onChange={(value) => {
             setFormData({ ...formData, content: value });
           }}
         />
-        <Button type='submit' gradientDuoTone='purpleToBlue' pill>
+        <div className='flex justify-center'>
+          <Button type='submit' gradientDuoTone='purpleToBlue' pill className='w-60'>
           Publish
         </Button>
+        </div>
+        
         {publishError && (
           <Alert className='mt-5' color='failure'>
             {publishError}

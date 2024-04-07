@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import parse from 'html-react-parser';
 
 export default function PostCard({ post }) {
   const [user, setUser] = useState({});
-  console.log(post)
+  // console.log(post)
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -23,7 +24,7 @@ export default function PostCard({ post }) {
   return (
     
 
-    <div className='shadow-md shadow-gray-300  border-gray-300 hover:opacity-50 rounded-md lg:w-[550px]'>
+    <div className='shadow-md shadow-gray-300  border-gray-300 hover:opacity-50 rounded-md '>
     <Link
     className="block-full lg:flex  p-1 bg-neutral-100 dark:bg-zinc-900 rounded-md"
     to={`/post/${post.slug}`}
@@ -40,7 +41,9 @@ export default function PostCard({ post }) {
         </div>
         
         <div>
-          <p className='line-clamp-3 text-sm'>{post.content}</p>
+          <p className='line-clamp-3 text-sm'>{parse(post.content)}</p>
+          {/* <p className='line-clamp-3 text-sm' dangerouslySetInnerHTML={{__html: post.content}}>{post.content}</p> */}
+          {/* {parse(post.content)} */}
         </div>
        
       </div>
